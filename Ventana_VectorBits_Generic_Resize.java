@@ -229,6 +229,7 @@ public class Ventana_VectorBits_Generic_Resize{//Ventana vector bitwise generico
     int Cantidad = Integer.parseInt(JOptionPane.showInputDialog(Ventana, "Ingresar la cantidad: "));
     int NumberBit = Integer.parseInt(JOptionPane.showInputDialog(Ventana, "Ingresar Número de bits: "));
     A = new VectorBitwise(Cantidad, NumberBit);
+    MostrarTxt.setText(String.valueOf(A.ObtenerTodo()));
   }
   
   public void Insertar_Click(){
@@ -236,12 +237,14 @@ public class Ventana_VectorBits_Generic_Resize{//Ventana vector bitwise generico
     int Elemento = Integer.parseInt(Insertar_ElementoTxt.getText());
     int Position = Integer.parseInt(Insertar_PositionTxt.getText());
     A.Insertar(Elemento, Position);
+    MostrarTxt.setText(String.valueOf(A.ObtenerTodo()));
   }
   
   public void Sacar_Click(){
     int Position = Integer.parseInt(SacarTxt.getText());
     //A.Sacar(Position);
-    MostrarTxt.setText(String.valueOf(A.Sacar(Position)));
+    //MostrarTxt.setText(String.valueOf(A.Sacar(Position)));
+    MostrarTxt.setText(String.valueOf(A.ObtenerTodo()));
     //MostrarTxt.setText(A.ObtenerTodo());
   }
 }

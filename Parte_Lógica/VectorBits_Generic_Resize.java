@@ -35,35 +35,34 @@ public class VectorBitwise_Generico{
   }
   
   public void Insertar(int Elemento, int Position){
-    /*if(Position <= dim){
+    if(Position <= dim){
       Redimensionar(Position);
       dim = Position;
      } 
-     */
-    if(Position <= dim){
-      int Elemento_aux = Elemento;
+     
+    int Elemento_aux = Elemento;
         
-      int Numero_Vector = GetNumero_Of_Elemento(Position);
-      int numberBit = GetNumero_Of_Bit(Position);
-      int Mask = (int)  Math.pow(2,NumberBit) - 1;
+    int Numero_Vector = GetNumero_Of_Elemento(Position);
+    int numberBit = GetNumero_Of_Bit(Position);
+    int Mask = (int)  Math.pow(2,NumberBit) - 1;
         
-      Mask = Mask << numberBit;
-      Mask = ~ Mask; /**/
-      Vector[Numero_Vector] = Vector[Numero_Vector] & Mask;
-      Elemento = Elemento << numberBit;
-      Vector[Numero_Vector] = Vector[Numero_Vector] | Elemento;
+    Mask = Mask << numberBit;
+    Mask = ~ Mask; /**/
+    Vector[Numero_Vector] = Vector[Numero_Vector] & Mask;
+    Elemento = Elemento << numberBit;
+    Vector[Numero_Vector] = Vector[Numero_Vector] | Elemento;
         
-      if(numberBit + NumberBit > 32){
+    if(numberBit + NumberBit > 32){
         
-        int Number_bitFaltante = (numberBit + NumberBit) -32;
-        int Mask1 =  (int) Math.pow(2,NumberBit) - 1;
+      int Number_bitFaltante = (numberBit + NumberBit) -32;
+      int Mask1 =  (int) Math.pow(2,NumberBit) - 1;
           
-        Mask1 = ~ Mask1;
-        Vector[Numero_Vector + 1] = Vector[Numero_Vector + 1] & Mask1;
-        Elemento_aux = Elemento_aux >>> NumberBit - Number_bitFaltante;
-        Vector[Numero_Vector + 1] = Vector[Numero_Vector + 1] | Elemento_aux; 
-      }  
-    }
+      Mask1 = ~ Mask1;
+      Vector[Numero_Vector + 1] = Vector[Numero_Vector + 1] & Mask1;
+      Elemento_aux = Elemento_aux >>> NumberBit - Number_bitFaltante;
+      Vector[Numero_Vector + 1] = Vector[Numero_Vector + 1] | Elemento_aux; 
+    }  
+
   }
   
   public int Sacar(int Position){
