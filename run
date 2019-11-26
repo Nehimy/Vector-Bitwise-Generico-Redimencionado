@@ -1,0 +1,3 @@
+#!/bin/bash
+javac Ventana_VectorBitwise_Generico.java
+java Ventana_VectorBitwise_Generico
