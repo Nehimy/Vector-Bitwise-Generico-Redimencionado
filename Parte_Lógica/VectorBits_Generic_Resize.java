@@ -10,10 +10,10 @@ public class VectorBits_Generic_Resize{
   int NumberBit;
   
   //Constructor               10            7
-  public VectorBitwise_Generico(int Cantidad, int numberBit){
+  public VectorBits_Generic_Resize(int Cantidad, int numberBit){
     this.NumberBit = numberBit;
     
-    int Cantidad_bits = Cantidad * numberBit; //70
+    int Cantidad_bits = Cantidad * NumberBit; //70
     int Cantidad_Vectorcitos = Cantidad_bits / 32;//2
     if(Cantidad_bits % 32 != 0){
       Cantidad_Vectorcitos++; //3
@@ -25,22 +25,25 @@ public class VectorBits_Generic_Resize{
   private int GetNumero_Of_Elemento(int Position){
   
     int cantidadDeVector = (((Position - 1) * NumberBit) / 32);
+    //System.out.println("Div=" + String.valueOf(cantidadDeVector));
     return cantidadDeVector;
+    
   }
   
   private int GetNumero_Of_Bit(int Position){
   
     int NumeroDEl_Bit =  (((Position - 1) * NumberBit) % 32);  //////////
-    System.out.println("mod=" + String.valueOf(NumeroDEl_Bit));
+    //System.out.println("mod=" + String.valueOf(NumeroDEl_Bit));
     return NumeroDEl_Bit;
     
   }
   
   public void Insertar(int Elemento, int Position){
   
-    if(Position <= dim){
+    if(Position > dim){
       Redimensionar(Position);
       dim = Position;
+      System.out.println("entro");
      } 
      
     int Elemento_aux = Elemento;
@@ -57,7 +60,7 @@ public class VectorBits_Generic_Resize{
         
     if(numberBit + NumberBit > 32){
         
-      int Number_bitFaltante = (numberBit + NumberBit) -32;
+      int Number_bitFaltante = (numberBit + NumberBit) - 32;
       int Mask1 =  (int) Math.pow(2,NumberBit) - 1;
           
       Mask1 = ~ Mask1;
@@ -103,21 +106,22 @@ public class VectorBits_Generic_Resize{
       DimAux.Vector[i] = Vector[i];
     }
     
-    int numberBit = Position * NumberBit;
-    int Numero_Vector = numberBit / 32;
+    int numberBit = Position * NumberBit;//recalculamos para tener mas espacios
+    int Numero_Vector = numberBit / 32;//En el vector
     
     if(numberBit % 32 != 0){
       Numero_Vector++;
     }
     
     Vector = new int [Numero_Vector];
+    
     for(int i = 0; i <= DimAux.Vector.length -1; i++){
       if(i < DimAux.Vector[i]){
-        DimAux.Vector[i] = Vector[i];
+        Vector[i] = DimAux.Vector[i];
       }
       
     }
-    
+    System.out.println("dim");
   }
   
   public String ObtenerTodo(){
